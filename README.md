@@ -66,7 +66,7 @@ to get the most similar word towords the vector we got.
 
 The code is based on Python3.
 
-1. Run the `create_embedding.py` file to get the word2vec model `word_embedding.wv`.
+1. Run the `create_embedding.py` file to get the word2vec model `word_embedding.wv`. This need to be run twice to make sure all words are processed.
 
 2. Run the `neural_network.py` to get the output, the `result.csv` file
 
