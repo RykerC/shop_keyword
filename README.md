@@ -55,9 +55,9 @@ LSTM is good at dealing with the text data since it has 'memory'. And GRU is bet
 
 After traing and prediction, we could get the results but in vectors. Now we use the 
 
-`wv_model = Word2Vec.load('word_embedding.wv')
+`wv_model = Word2Vec.load('word_embedding.wv')`
 
-wv_model.most_similar(positive=[vector], topn=1)`
+`wv_model.most_similar(positive=[vector], topn=1)`
 
 to get the most similar word towords the vector we got. 
 
