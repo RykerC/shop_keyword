@@ -11,6 +11,7 @@ When we process Chinese, we need to do the segment first. After this, we need to
 ### 1. Analyze the dataset
 
 The first thing we need to do is analyze the raw data. The train set has these columns:
+
 `product name`, `category`, `query`, `event`, `date`.
 
 And the test set has:
@@ -30,5 +31,23 @@ However, the traditional `jieba` lib preforms well on Simplified Chinese, the da
 Beside, the keyword in `query` may be not an option in the dictionary, so we add the `query` words list to our dictionary by using `jieba.add_word()`. So that when we do the segment, we can get more accurate results.
 
 ### 3. Word Embedding
+
+The text data cannot be used directly in the neural network. We need to convert it into vectors first. And there are several ways to achieve this. One is `TfidfVectorizer` which is counting the frequency of the word tokens. And another way is `Word Embedding`. 
+
+And in the `Word Embedding`, we have two main methods, one is `one-hot model`, the other is `Word2Vec`. I adopted the second one because it could consider the relationship(the distance) between words which in `one-hot model` is not considered. Also the `Word2Vec` can reduce the dimension of the word vector.
+
+I used `gensim` module do the word embedding. When do the embedding, it needs corpus. I did't find much Traditional Chinese corpus I only used the train & test set to train the word embedding model, so the word embedding results are not that perfect.
+
+After embedding, we could get a word2vec model, which I saved as `word_embedding.wv`. Then we could use `model.wv[word]` to get the vector representation of the word after we load the word2vec model by `model = Word2Vec.load('word_embedding.wv')`.
+
+### 4. Sequence to Sequence Model
+
+After the word embedding, we can start to build the neural network to do the trainin to get the keyword extraction. Based on the data, I treat this as a supervised learning task. In this part, I checked several method, but I think the Sequence to Sequence Model could have a good performance. The traditional classification usually used when we have fixed categories. But in the project, the keywords are always changed based on different product name. 
+
+
+
+
+
+
 
 
