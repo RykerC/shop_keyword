@@ -8,8 +8,7 @@ segment_sentence_train, length_train, label_vector, segment_sentence_test, lengt
 
 df = pd.read_csv('train.csv',
                      names=['product name', 'category', 'query', 'event', 'date'])
-df2 = pd.read_csv('test.csv',
-                  names=['product name', 'category'])
+df2 = pd.read_csv('test.csv')
 
 query_list = df['query'].tolist()
 labels = []
@@ -22,7 +21,7 @@ for ls in query_word_list:
     for word in ls:
         jieba.add_word(word)
 product_name_train = df['product name'].tolist()
-product_name_test = df2['product name'].tolist()
+product_name_test = df2['Product Name'].tolist()
 
 segment_sentence = []
 temp_list1 = [''.join(re.split(r'\W+', sentence.lower())) for sentence in product_name_train]

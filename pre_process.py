@@ -80,10 +80,9 @@ def clean_files(train, test):
     #         event_label.append(0)
 
 
-    df2 = pd.read_csv(test,
-                     names=['product name', 'category'])
+    df2 = pd.read_csv(test)
 
-    product_name_test = df2['product name'].tolist()
+    product_name_test = df2['Product Name'].tolist()
 
     segment_sentence_test, length_test, extra_list2 = embedding_map(product_name_test)
 

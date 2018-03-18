@@ -16,10 +16,11 @@ def build_model(input_shape, max_out_seq_len, hidden_size):
 
     model = Sequential()
     model.add(GRU(hidden_size[0], input_shape=(input_shape[1], input_shape[2]), return_sequences=False))
-    model.add(Dropout(0.2))
+    model.add(Dropout(0.3))
     model.add(Dense(hidden_size[1], activation="relu"))
     model.add(RepeatVector(max_out_seq_len))
     model.add(GRU(hidden_size[1], return_sequences=True))
+    model.add(Dropout(0.3))
     model.add(TimeDistributed(Dense(units=input_shape[2], activation="linear")))
     model.compile(loss="mse", optimizer='adam')
     model.summary()
@@ -34,7 +35,7 @@ y_shape = label.shape
 
 neurons = [128, 64]
 model = build_model(input_shape, label_length, neurons)
-model.fit(train_X, label, batch_size=300, epochs=150, verbose=1)
+model.fit(train_X, label, batch_size=300, epochs=160, verbose=1)
 pred = model.predict(test)
 
 print(pred)
@@ -52,7 +53,7 @@ for words in pred:
         if new_words != []:
             tem_ls.append(new_words)
     result.append(tem_ls)
-df = pd.read_csv('test.csv', names=['product name', 'category'])
+df = pd.read_csv('test.csv')
 df['key word'] = result
 df.to_csv('result.csv', encoding='utf-8')
 print(result)
