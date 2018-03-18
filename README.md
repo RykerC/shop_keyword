@@ -25,4 +25,10 @@ The `product name` is the input data that we need to use. and the `query` can be
 
 Chinese is not like English, in which the words in sentence have a space to split. So when we deal with the Chinese, we need to do the Segment first. Segment can convert the whole sentence into several pharse or words. One of the most popular and useful tools that are used in Chinese Segment is called `jieba`. In this project, I used this as my segment lib.
 
-However, the traditional `jieba` lib preforms well on Simplified Chinese, the date set we have is in Traditional Chinese. Under this situation, I found a dict that are better for Traditional Chinese. In the folder called `dict.txt.big.txt`.
+However, the traditional `jieba` lib preforms well on Simplified Chinese, the date set we have is in Traditional Chinese. Under this situation, I found a dict that are better for Traditional Chinese. In the folder called `dict.txt.big.txt`. So at the beginning of the code, we need to use `jieba.set_dictionary()` to change the segment dictionary.
+
+Beside, the keyword in `query` may be not an option in the dictionary, so we add the `query` words list to our dictionary by using `jieba.add_word()`. So that when we do the segment, we can get more accurate results.
+
+### 3. Word Embedding
+
+
