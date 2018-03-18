@@ -9,7 +9,7 @@ import pandas as pd
 
 
 
-train_X, input_length, label, test, output_length, label_length = pp.clean_files('train.csv', 'test.csv')
+train_X, input_length, label, test, output_length, label_length, l1, l2, l3 = pp.clean_files('train.csv', 'test.csv')
 
 
 def build_model(input_shape, max_out_seq_len, hidden_size):

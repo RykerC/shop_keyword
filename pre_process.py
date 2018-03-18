@@ -88,5 +88,5 @@ def clean_files(train, test):
     segment_sentence_test, length_test, extra_list2 = embedding_map(product_name_test)
 
 
-    return segment_sentence_train, length_train, label_vector, segment_sentence_test, length_test, length_label #, extra_list1, extra_list2, extra_list3
+    return segment_sentence_train, length_train, label_vector, segment_sentence_test, length_test, length_label , extra_list1, extra_list2, extra_list3
 
